@@ -215,7 +215,7 @@ func (i *Impi) verifyPathsFromChan() error {
 			i.resultChan <- verificationError
 		}
 
-		fmt.Printf("impiok: %v", filePath)
+		fmt.Printf("impi_ok: %v\n", filePath)
 	}
 
 	// a boolean in the result chan signifies that we're done

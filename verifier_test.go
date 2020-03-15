@@ -59,7 +59,7 @@ type IgnoreGeneratedFileTestSuite struct {
 
 func (s *IgnoreGeneratedFileTestSuite) SetupSuite() {
 	s.options.Scheme = ImportGroupVerificationSchemeStdLocalThirdParty
-	s.options.LocalPrefix = "github.com/pavius/impi"
+	s.options.LocalPrefix = "github.com/tnmurphy/impi"
 	s.options.IgnoreGenerated = true
 }
 
