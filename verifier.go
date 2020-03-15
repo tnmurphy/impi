@@ -302,12 +302,6 @@ func (v *verifier) classifyImportTypes(importInfoGroups []importInfoGroup) {
 		// create slice of strings so we can compare
 		for _, importInfo := range importInfoGroup.importInfos {
 
-			// if the value doesn't contain dot, it's a standard import
-			if !strings.Contains(importInfo.value, ".") {
-				importInfo.classifiedType = importTypeStd
-				continue
-			}
-
 			// if there's no prefix specified, it's either standard or local
 			if len(v.verifyOptions.LocalPrefix) == 0 {
 				importInfo.classifiedType = importTypeLocalOrThirdParty
@@ -316,9 +310,17 @@ func (v *verifier) classifyImportTypes(importInfoGroups []importInfoGroup) {
 
 			if strings.HasPrefix(importInfo.value, v.verifyOptions.LocalPrefix) {
 				importInfo.classifiedType = importTypeLocal
+				continue
 			} else {
 				importInfo.classifiedType = importTypeThirdParty
 			}
+
+			// if the value doesn't contain dot, it's a standard import
+			if !strings.Contains(importInfo.value, ".") {
+				importInfo.classifiedType = importTypeStd
+				continue
+			}
+
 		}
 	}
 }
